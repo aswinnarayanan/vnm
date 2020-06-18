@@ -61,4 +61,7 @@ ENV PATH="/usr/local/singularity/bin:${PATH}" \
 
 COPY ./menus/panel /home/neuro/.config/lxpanel/LXDE/panels/panel
 
+# Add applications
+COPY ./apps/* /usr/share/applications/
+
 WORKDIR /vnm
