@@ -44,3 +44,30 @@ FROM desktop as runner
 COPY --from=install-singularity /usr/local /usr/local
 
 WORKDIR /vnm
+
+
+# =====================================================================================
+# INSTALL Tools, like GIT
+# =====================================================================================
+RUN apt-get update \
+    && apt-get install --no-install-recommends -y \
+        git \
+    && rm -rf /var/lib/apt/lists/*
+
+
+#TODO
+# add singularity bindpoints to /vnm globally
+# add module system
+# create entry in application menu to call a script that pulls container from transparent singularity
+#  3  curl -s -S -X GET https://swift.rc.nectar.org.au:8888/v1/AUTH_d6165cc7b52841659ce8644df1884d5e/singularityImages
+#     4  git clone https://github.com/CAIsr/transparent-singularity.git itksnap_3.8.0_20200505.sif
+#     5  apt install git
+#     6  sudo apt install git
+#     7  apt update
+#     8  sudo apt update
+#     9  sudo apt install git
+#    10  git clone https://github.com/CAIsr/transparent-singularity.git itksnap_3.8.0_20200505.sif
+#    11  cd itksnap_3.8.0_20200505.sif/
+#    12  ./run_transparent_singularity.sh itksnap_3.8.0_20200505.sif
+#    13  ll
+#    14  ./itksnap

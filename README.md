@@ -2,19 +2,25 @@
 
 how to build:
 ```
-docker build -t vnm:latest . 
+docker build -t vnm:stable . 
 ```
 
 how to start local:
 ```
-docker run --privileged -e USER=neuro -e PASSWORD=neuro --name vnm -p 6080:80 vnm:latest 
+docker run --privileged -e USER=neuro -e PASSWORD=neuro --name vnm -p 6080:80 vnm:stable 
 open in browser: http://localhost:6080
 ```
 
 how to start with custom screen resolution for VNC Viewer:
 ```
-docker run --privileged -e USER=neuro -e PASSWORD=neuro --name vnm -e RESOLUTION=1920x980 -p 6080:80 -p 5900:5900 vnm:latest 
+docker run --privileged -e USER=neuro -e PASSWORD=neuro --name vnm -e RESOLUTION=1920x980 -p 6080:80 -p 5900:5900 vnm:stable 
 open in VNC viewer:  http://localhost:5900
+```
+
+
+testing new features:
+```
+docker run --privileged -e USER=neuro -e PASSWORD=neuro --name vnm_latest -e RESOLUTION=1920x980 -p 6080:80 -p 5900:5900 -v C:/vnm:/vnm vnm:latest 
 ```
 
 how to stop:
