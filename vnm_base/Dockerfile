@@ -114,14 +114,14 @@ COPY ./config/panel /etc/skel/.config/lxpanel/LXDE/panels/panel
 WORKDIR /
 
 #RUN git clone https://github.com/NeuroDesk/neurodesk.git /neurodesk
-COPY ./neurodesk /neurodesk
+# COPY ./neurodesk /neurodesk
 
-WORKDIR /neurodesk
-RUN bash build.sh --lxde --edit \
-    && bash install.sh \
-    && ln -s /vnm/containers /neurodesk/local/containers \
-    && mkdir -p /etc/skel/Desktop/ \
-    && ln -s /vnm /etc/skel/Desktop/
+# WORKDIR /neurodesk
+# RUN bash build.sh --lxde --edit \
+#     && bash install.sh \
+#     && ln -s /vnm/containers /neurodesk/local/containers \
+#     && mkdir -p /etc/skel/Desktop/ \
+#     && ln -s /vnm /etc/skel/Desktop/
 
 
 # configure where new home-directories are created
