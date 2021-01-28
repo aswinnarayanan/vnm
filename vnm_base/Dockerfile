@@ -113,7 +113,8 @@ COPY ./config/panel /etc/skel/.config/lxpanel/LXDE/panels/panel
 # Application and submenu icons
 WORKDIR /
 
-RUN git clone https://github.com/NeuroDesk/neurodesk.git /neurodesk
+#RUN git clone https://github.com/NeuroDesk/neurodesk.git /neurodesk
+COPY ./neurodesk /neurodesk
 
 WORKDIR /neurodesk
 RUN bash build.sh --lxde --edit \
