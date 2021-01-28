@@ -7,13 +7,13 @@ on:
       - .github/workflows/docker-image.yml
       - neurodesk_base/Dockerfile
       - config/*
-      - neurodesk/*
+      # - neurodesk/*
   pull_request:
     paths:
       - .github/workflows/docker-image.yml
       - neurodesk_base/Dockerfile
       - config/*
-      - neurodesk/*
+      # - neurodesk/*
     
 env:
   DOCKERHUB_ORG: ${{ secrets.DOCKERHUB_ORG }}

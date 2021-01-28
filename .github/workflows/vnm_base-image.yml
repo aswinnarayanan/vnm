@@ -7,7 +7,7 @@ on:
       - .github/workflows/docker-image.yml
       - vnm_base/Dockerfile
       - config/*
-      - neurodesk/*
+      # - neurodesk/*
   check_run:
     branches: [ master ]
     paths:
@@ -17,7 +17,7 @@ on:
       - .github/workflows/docker-image.yml
       - vnm_base/Dockerfile
       - config/*
-      - neurodesk/*
+      # - neurodesk/*
     
 env:
   DOCKERHUB_ORG: ${{ secrets.DOCKERHUB_ORG }}
