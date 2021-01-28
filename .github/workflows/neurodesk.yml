@@ -1,0 +1,104 @@
+name: Neurodesk CI/CD
+
+on:
+  push:
+    branches: [ master ]
+    paths-ignore: [ '**/README.md' ]  
+  pull_request:
+    paths-ignore: [ '**/README.md' ] 
+    
+env:
+  DOCKERHUB_ORG: ${{ secrets.DOCKERHUB_ORG }}
+  ORACLE_USER: ${{ secrets.ORACLE_USER }}
+  ORACLE_NEURODESK_BUCKET: ${{ secrets.ORACLE_NEURODESK_BUCKET }}
+  OS_PASSWORD: ${{ secrets.SWIFT_OS_PASSWORD }}
+  OS_PROJECT_ID: ${{ secrets.SWIFT_OS_PROJECT_ID }}
+  OS_USERNAME: ${{ secrets.SWIFT_OS_USERNAME }}
+  OS_APPLICATION_CREDENTIAL_ID: ${{ secrets.SWIFT_OS_APPLICATION_CREDENTIAL_ID }}
+  OS_APPLICATION_CREDENTIAL_SECRET: ${{ secrets.SWIFT_OS_APPLICATION_CREDENTIAL_SECRET }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+  DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+
+jobs:
+  upload_containers_simg:
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name : Check if singularity cache files exist in oracle cloud and swift storage and build if not there
+      run: /bin/bash .github/workflows/upload_containers_simg.sh
+  test_neurodesk_cli:
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: Test neurodesk cli version
+      run: /bin/bash .github/workflows/test_neurodesk_cli.sh
+  build_vnm:
+    needs: [test_neurodesk_cli]
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@v2
+    - name: login to docker hubs
+      run: /bin/bash .github/workflows/login_registries.sh
+    - name: Pull latest vnm build from Github Packages
+      run: /bin/bash .github/workflows/pull_latest_container_from_gh_packages.sh vnm2
+    - name: Build new vnm image
+      run: /bin/bash .github/workflows/build_docker_image.sh vnm
+    - name: Push vnm to Github packages (if changes found)
+      if: env.GITHUB_REF != 'refs/heads/master' && env.ROOTFS_NEW != env.ROOTFS_CACHE
+      run: /bin/bash .github/workflows/push_to_gh_packages.sh
+    - name: Test VNM container image
+      run: |
+        echo "[DEBUG] WORK IN PROGRESS"
+        # docker run $IMAGEID:$SHORT_SHA ls /neurodesk/
+    - name: Push vnm to Dockerhub  
+      run: /bin/bash .github/workflows/push_to_dockerhub.sh vnm
+  build_neurodesk:
+    needs: [test_neurodesk_cli]
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@v2
+    - name: login to docker hubs
+      run: /bin/bash .github/workflows/login_registries.sh
+    - name: Pull latest neurodesk build from Github Packages
+      run: /bin/bash .github/workflows/pull_latest_container_from_gh_packages.sh neurodesk
+    - name: Build new neurodesk image
+      run: /bin/bash .github/workflows/build_docker_image.sh neurodesk
+    - name: Push neurodesk to Github packages (if changes found)
+      run: /bin/bash .github/workflows/push_to_gh_packages.sh
+    - name: Push neurodesk to Dockerhub  (if enabled & changes found)
+      run: /bin/bash .github/workflows/push_to_dockerhub.sh neurodesk
+  deploy_neurodesk_simg:
+    needs: [upload_containers_simg, test_neurodesk_cli, build_neurodesk]
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: login to docker hubs
+      run: /bin/bash .github/workflows/login_registries.sh
+    - name: Pull latest neurodesk build from Github Packages
+      run: /bin/bash .github/workflows/pull_latest_container_from_gh_packages.sh neurodesk
+    - name: Upload Neurodesk Singularity Container simg
+      run: /bin/bash .github/workflows/upload_neurodesk_singularity_simg.sh
+  deploy_neurodesk_sif:
+    needs: [upload_containers_simg, test_neurodesk_cli, build_neurodesk]
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: login to docker hubs
+      run: /bin/bash .github/workflows/login_registries.sh
+    - name: Pull latest neurodesk build from Github Packages
+      run: /bin/bash .github/workflows/pull_latest_container_from_gh_packages.sh neurodesk
+    - name: Upload Neurodesk Singularity Container SIF
+      run: /bin/bash .github/workflows/upload_neurodesk_singularity_sif.sh

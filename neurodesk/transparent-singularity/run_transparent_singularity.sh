@@ -7,11 +7,20 @@
 #by Steffen Bollmann <Steffen.Bollmann@cai.uq.edu.au> & Tom Shaw <t.shaw@uq.edu.au>
 # set -e
 
-echo "[DEBUG] This is run_transparent_singularity.sh script"
+echo "[DEBUG] This is the run_transparent_singularity.sh script"
+
+echo "Singularity bindpath is: $SINGULARITY_BINDPATH"
+echo "Singularity bindpath should at least have vnm path!"
 
 
 _script="$(readlink -f ${BASH_SOURCE[0]})" ## who am i? ##
 _base="$(dirname $_script)" ## Delete last component from $_script ##
+
+echo "making sure this is not running in a symlinked directory (singularity bug)"
+echo "path: $_base"
+cd $_base
+_base=`pwd -P`
+echo "corrected path: $_base"
 
 POSITIONAL=()
 while [[ $# -gt 0 ]]
@@ -97,25 +106,43 @@ qq=`which  singularity`
 if [[  ${#qq} -lt 1 ]]; then
    echo "This script requires singularity on your path. E.g. add module load singularity/2.4.2 to your .bashrc"
    echo "If you are root try again as normal user"
+   exit 2
 fi
 
 echo "containerEnding: ${containerEnding}"
 echo "trying if $container exists in the cache"
 
 
-# check if image is available on singularity cache:
+# check if image is available on singularity caches:
 if curl --output /dev/null --silent --head --fail "https://swift.rc.nectar.org.au:8888/v1/AUTH_d6165cc7b52841659ce8644df1884d5e/singularityImages/$container"; then
-   echo "$container exists in the cache"
-   container_pull="curl -X GET https://swift.rc.nectar.org.au:8888/v1/AUTH_d6165cc7b52841659ce8644df1884d5e/singularityImages/$container -O"
+   echo "$container exists in the nectar cache"
 else
-   echo "$container does not exist in cache - loading from docker!"
-   storage="docker"
+   if curl --output /dev/null --silent --head --fail "https://objectstorage.us-ashburn-1.oraclecloud.com/n/nrrir2sdpmdp/b/neurodesk/o/$container"; then
+      echo "$container exists in the oracle cache"
+      swift_down="true"
+   else
+      echo "$container does not exist in any cache - loading from docker!"
+      storage="docker"
+   fi
 fi
+
 
 if [ "$storage" = "docker" ]; then
    echo "pulling from docker cloud"
-
    container_pull="singularity pull --name $container docker://vnmd/${containerName}_${containerVersion}:${containerDate}"
+else
+   echo "check if aria2 is installed ..."
+   qq=`which  aria2c`
+   if [[  ${#qq} -lt 1 ]]; then
+      echo "aria2 is not install. Defaulting to curl."
+      if  [ "$swift_down" = "true" ]; then
+         container_pull="curl -X GET https://objectstorage.us-ashburn-1.oraclecloud.com/n/nrrir2sdpmdp/b/neurodesk/o/$container -O"
+      else
+         container_pull="curl -X GET https://swift.rc.nectar.org.au:8888/v1/AUTH_d6165cc7b52841659ce8644df1884d5e/singularityImages/$container -O"
+      fi
+   else 
+      container_pull="aria2c https://swift.rc.nectar.org.au:8888/v1/AUTH_d6165cc7b52841659ce8644df1884d5e/singularityImages/$container https://objectstorage.us-ashburn-1.oraclecloud.com/n/nrrir2sdpmdp/b/neurodesk/o/$container https://objectstorage.eu-zurich-1.oraclecloud.com/n/nrrir2sdpmdp/b/neurodesk/o/$container"
+   fi
 fi
 
 
@@ -130,9 +157,29 @@ fi
 
 echo "making container executable"
 chmod a+x $container
+if [[  ${#qq} -lt 1 ]]; then
+   echo "Something went wrong when making the container executabel."
+   exit 2
+fi
 
 echo "checking which executables exist inside container"
+echo "executing: singularity exec --pwd $_base $container $_base/ts_binaryFinder.sh"
 singularity exec --pwd $_base $container $_base/ts_binaryFinder.sh
+
+echo "checking if commands.txt exists now"
+if  [[ -f $_base/commands.txt ]]; then
+   echo "This worked!"
+else
+   echo "Trying again with Singularity Bindpath set:"
+   export SINGULARITY_BINDPATH=/vnm
+   singularity exec --pwd $_base $container $_base/ts_binaryFinder.sh
+   if  [[ -f $_base/commands.txt ]]; then
+      echo "This worked!"
+   else
+      echo "Something is wrong with the Singularity Bindpath."
+      exit 2
+   fi
+fi
 
 echo "create singularity executable for each regular executable in commands.txt"
 # $@ parses command line options.
