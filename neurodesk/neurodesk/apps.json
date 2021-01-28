@@ -1,31 +1,34 @@
 {
     "afni": {
         "apps": {
-            "afni 20.3.00": {
-                "version": "20201011",
+            "afni 20.3.05": {
+                "version": "20210104",
                 "exec": ""
             },
-            "sumaGUI-afni 20.3.00": {
-                "version": "20201011",
+            "sumaGUI-afni 20.3.05": {
+                "version": "20210104",
                 "exec": "suma"
             }
-        }
+        },
+        "categories": ["functional imaging"]
     },
     "ants": {
         "apps": {
             "ants 2.3.4": {
-                "version": "20200811",
+                "version": "20210104",
                 "exec": ""
             }
-        }
+        },
+        "categories": ["image segmentation", "image registration"]
     },
     "ashs": {
         "apps": {
             "ashs 2.0.0": {
-                "version": "20200905",
+                "version": "20210105",
                 "exec": ""
             }
-        }
+        },
+        "categories": ["image segmentation"]
     },
     "bidstools": {
         "apps": {
@@ -33,7 +36,21 @@
                 "version": "20201208",
                 "exec": ""
             }
-        }
+        },
+        "categories": ["data organisation"]
+    },
+    "conn": {
+        "apps": {
+            "connGUI-conn 20b": {
+                "version": "20210109",
+                "exec": "conn"
+            },
+            "conn 20b": {
+                "version": "20210109",
+                "exec": ""
+            }
+        },
+        "categories": ["functional imaging"]
     },
     "connectomeworkbench": {
         "apps": {
@@ -41,15 +58,17 @@
                 "version": "20201119",
                 "exec": ""
             }
-        }
+        },
+        "categories": []
     },
     "convert3d": {
         "apps": {
             "convert3d 1.0.0": {
-                "version": "20200811",
+                "version": "20210104",
                 "exec": ""
             }
-        }
+        },
+        "categories": []
     },
     "datalad": {
         "apps": {
@@ -57,15 +76,21 @@
                 "version": "20201119",
                 "exec": ""
             }
-        }
+        },
+        "categories": ["data organisation"]
     },
     "dsistudio": {
         "apps": {
             "dsistudio 2020.10": {
-                "version": "20201125",
+                "version": "20210109",
                 "exec": ""
+            },            
+            "dsistudioGUI-dsistudio 2020.10": {
+                "version": "20210109",
+                "exec": "dsi_studio"
             }
-        }
+        },
+        "categories": ["diffusion imaging"]
     },
     "fatsegnet": {
         "apps": {
@@ -73,7 +98,8 @@
                 "version": "20201212",
                 "exec": ""
             }
-        }
+        },
+        "categories": []
     },
     "fmriprep": {
         "apps": {
@@ -81,19 +107,21 @@
                 "version": "20201118",
                 "exec": ""
             }
-        }
+        },
+        "categories": ["functional imaging", "image segmentation", "image registration"]
     },
     "freesurfer": {
         "apps": {
             "freesurfer 7.1.1": {
-                "version": "20200924",
+                "version": "20210105",
                 "exec": ""
             },
             "freeviewGUI-freesurfer 7.1.1": {
-                "version": "20200924",
+                "version": "20210105",
                 "exec": "freeview"
             }
-        }
+        },
+        "categories": ["functional imaging", "image segmentation", "image registration"]
     },
     "fsl": {
         "apps": {
@@ -106,26 +134,28 @@
                 "exec": "fsleyes"
             },
             "fsl 6.0.4": {
-                "version": "20201029",
+                "version": "20210105",
                 "exec": ""
             },
             "fsleyesGUI-fsl 6.0.4": {
-                "version": "20201029",
+                "version": "20210105",
                 "exec": "fsleyes"
             }
-        }
+        },
+        "categories": ["functional imaging", "structural imaging", "diffusion imaging", "image segmentation", "image registration"]
     },
     "gimp": {
         "apps": {
             "gimpGUI-gimp 2.10.18": {
-                "version": "20201123",
+                "version": "20210104",
                 "exec": "gimp"
             },
             "gimp 2.10.18": {
-                "version": "20201123",
+                "version": "20210104",
                 "exec": ""
             }
-        }
+        },
+        "categories": []
     },
     "itksnap": {
         "apps": {
@@ -137,27 +167,30 @@
                 "version": "20200811",
                 "exec": ""
             }
-        }
+        },
+        "categories": ["image segmentation"]
     },
     "julia": {
         "apps": {
             "julia 1.4.1": {
-                "version": "20201108",
+                "version": "20210105",
                 "exec": ""
             }
-        }
+        },
+        "categories": ["programming"]
     },
     "minc": {
         "apps": {
             "minc 1.9.17": {
-                "version": "20200811",
+                "version": "20210105",
                 "exec": ""
             },
             "registerGUI-minc 1.9.17": {
-                "version": "20200811",
+                "version": "20210105",
                 "exec": "register"
             }
-        }
+        },
+        "categories": ["image segmentation", "image registration", "structural imaging"]
     },
     "mriqc": {
         "apps": {
@@ -165,7 +198,8 @@
                 "version": "20201104",
                 "exec": ""
             }
-        }
+        },
+        "categories": []
     },
     "mrtrix3": {
         "apps": {
@@ -185,7 +219,8 @@
                 "version": "20201125",
                 "exec": "mrview"
             }
-        }
+        },
+        "categories": ["diffusion imaging"]
     },
     "mrtrix3tissue": {
         "apps": {
@@ -193,7 +228,26 @@
                 "version": "20201111",
                 "exec": ""
             }
-        }
+        },
+        "categories": ["diffusion imaging"]
+    },
+    "lashis": {
+        "apps": {
+            "lashis 1.0": {
+                "version": "20210105",
+                "exec": ""
+            }
+        },
+        "categories": ["image segmentation"]
+    },
+    "qsmxt": {
+        "apps": {
+            "qsmxt 1.0.0": {
+                "version": "20210128",
+                "exec": ""
+            }
+        },
+        "categories": ["quantitative imaging"]
     },
     "root": {
         "apps": {
@@ -201,7 +255,8 @@
                 "version": "20201104",
                 "exec": ""
             }
-        }
+        },
+        "categories": []
     },
     "slicer": {
         "apps": {
@@ -213,7 +268,8 @@
                 "version": "20201108",
                 "exec": "Slicer"
             }
-        }
+        },
+        "categories": ["image segmentation", "image registration"]
     },
     "spinalcordtoolbox": {
         "apps": {
@@ -221,7 +277,8 @@
                 "version": "20201108",
                 "exec": ""
             }
-        }
+        },
+        "categories": ["image segmentation", "image registration"]
     },
     "spm12": {
         "apps": {
@@ -233,14 +290,16 @@
                 "version": "20201120",
                 "exec": ""
             }
-        }
+        },
+        "categories": ["functional imaging"]
     },
     "tgvqsm": {
         "apps": {
             "tgvqsm 1.0.0": {
-                "version": "20200929",
+                "version": "20210119",
                 "exec": ""
             }
-        }
+        },
+        "categories": ["quantitative imaging"]
     }
 }

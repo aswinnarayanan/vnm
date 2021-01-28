@@ -15,12 +15,10 @@ IMG_NAME=${MOD_NAME}_${MOD_VERS}_${MOD_DATE}
 
 _script="$(readlink -f ${BASH_SOURCE[0]})" ## who am i? ##
 _base="$(dirname $_script)" ## Delete last component from $_script ##
-source ${_base}/configparser.sh
+source ${_base}/configparser.sh ${_base}/config.ini
 
 # default path is in the home directory of the user executing the call - except if there is a system wide install:
 export PATH_PREFIX=${vnm_installdir}
-
-source /etc/profile
 
 export CONTAINER_PATH=$PATH_PREFIX/containers
 export MODS_PATH=$CONTAINER_PATH/modules
@@ -29,6 +27,7 @@ echo "CONTAINER_PATH: $CONTAINER_PATH"
 echo "MODS_PATH: $MODS_PATH"
 
 echo "trying to module use  ${MODS_PATH}"
+if [ -f '/usr/share/module.sh' ]; then source /usr/share/module.sh; fi
 module use ${MODS_PATH}
 
 if [ ! -L `readlink -f $CONTAINER_PATH` ]; then
@@ -54,6 +53,8 @@ if [ -f "${CONTAINER_FILE_NAME}" ]; then
         echo "ERROR: This script requires singularity on your path. EXITING"
         exit 2
     fi
+
+    echo "testing if the container runs:"
     singularity exec ${CONTAINER_FILE_NAME} ls
     if [ $? -ne 0 ]; then
         echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
@@ -63,16 +64,19 @@ if [ -f "${CONTAINER_FILE_NAME}" ]; then
         echo "rm -rf ${MODS_PATH}/${MOD_NAME}/${MOD_VERS}" 
         read -p "Would you like me to do this for you (Y for yes)? " choice 
         [[ "$choice" == [Yy]* ]] && rm -rf ${CONTAINER_PATH}/${MOD_NAME}_${MOD_VERS}_* && rm -rf ${MODS_PATH}/${MOD_NAME}/${MOD_VERS}
-        exit
+        exit 2
     else 
         echo "Container ${IMG_NAME} seems to be fully downloaded and executable."        
     fi
 else
+    echo "copying transparent singularity files from ${vnm_installdir} to ${CONTAINER_PATH}/${IMG_NAME} ..."
     cp ${vnm_installdir}/transparent-singularity/*.sh ${CONTAINER_PATH}/${IMG_NAME}/
     cp ${vnm_installdir}/transparent-singularity/ts_* ${CONTAINER_PATH}/${IMG_NAME}/
-    cd ${IMG_NAME}
+    echo "changing directory to: ${CONTAINER_PATH}/${IMG_NAME}"
+    cd ${CONTAINER_PATH}/${IMG_NAME}
+    echo "executing run_transparent_singularity.sh --container ${IMG_NAME}.simg in $PWD"
     ${CONTAINER_PATH}/${IMG_NAME}/run_transparent_singularity.sh --container ${IMG_NAME}.simg
-    rm -rf .git* README.md run_transparent_singularity ts_*
+    # rm -rf .git* README.md run_transparent_singularity ts_*
 fi
 
 

@@ -12,7 +12,7 @@ echo "Script name : $_script"
 echo "Current working dir : $PWD"
 echo "Script location path (dir) : $_base"
 
-source ${_base}/configparser.sh
+source ${_base}/configparser.sh ${_base}/config.ini
 source ${_base}/fetch_containers.sh $1 $2 $3
 echo "fetching containers done."
 echo "MOD_NAME: " $MOD_NAME
@@ -27,7 +27,6 @@ if [ $# -le 3 ]; then
     CONTAINER_FILE_NAME=${CONTAINER_PATH}/${IMG_NAME}/${IMG_NAME}.simg
     echo "looking for ${CONTAINER_FILE_NAME}"
     if [ -f "${CONTAINER_FILE_NAME}" ]; then
-        clear
         cd 
         echo "Attempting to launch container ${IMG_NAME}"
         singularity exec ${CONTAINER_FILE_NAME} cat /README.md
