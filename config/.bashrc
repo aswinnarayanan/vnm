@@ -1,7 +1,6 @@
 #things in .bashrc get executed for every subshell
 if [ -f '/usr/share/module.sh' ]; then source /usr/share/module.sh; fi
 module use /vnm/containers/modules
-export SINGULARITY_BINDPATH=/afm01,/afm02,/90days,/30days,/QRISdata,/RDS,/data,/short,/proc_temp,/TMPDIR,/nvme,/local,/gpfs1,/working,/winmounts,/state,/autofs,/cluster,/local_mount,/scratch,/clusterdata,/nvmescratch,/vnm
 
 alias ll='ls -la'
 

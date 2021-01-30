@@ -77,6 +77,8 @@ RUN apt-get update \
         zlib1g-dev \
         zip \
         nextcloud-client \
+        iputils-ping \
+        sshfs \
     && rm -rf /var/lib/apt/lists/* \
     && rm /etc/apt/sources.list.d/vs-code.list
 
@@ -90,6 +92,9 @@ RUN pip3 install nipype \
 
 # setup module system & singularity
 COPY ./config/.bashrc /etc/skel/.bashrc
+RUN directories=`curl https://raw.githubusercontent.com/NeuroDesk/caid/master/recipes/globalMountPointList.txt` \
+    && mounts=`echo $directories | sed 's/ /,/g'` \
+    && echo "export SINGULARITY_BINDPATH=${mounts}" >> /etc/skel/.bashrc
 
 # Necessary to pass the args from outside this build (it is defined before the FROM).
 ARG GO_VERSION
