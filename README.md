@@ -17,15 +17,15 @@ For inquiries, please open a new issue, or contact Steffen Bollmann (https://git
 
 * Mac:
 ```
-docker run --privileged --name vnm -v ~/vnm:/vnm -e USER=neuro -p 6080:80 -p 5900:5900 vnmd/vnm:20210204
+docker run --privileged --name vnm -v ~/vnm:/vnm -e USER=neuro -p 6080:80 -p 5900:5900 vnmd/vnm:20210304
 ```
 * Windows:
 ```
-docker run --privileged --name vnm -v C:/vnm:/vnm -e USER=neuro -p 6080:80 -p 5900:5900 vnmd/vnm:20210204
+docker run --privileged --name vnm -v C:/vnm:/vnm -e USER=neuro -p 6080:80 -p 5900:5900 vnmd/vnm:20210304
 ```
 * Linux:
 ```
-sudo docker run --privileged --name vnm -v ~/vnm:/vnm -v /dev/shm:/dev/shm -e USER=neuro -p 6080:80 -p 5900:5900 vnmd/vnm:20210204
+sudo docker run --privileged --name vnm -v ~/vnm:/vnm -v /dev/shm:/dev/shm -e USER=neuro -p 6080:80 -p 5900:5900 vnmd/vnm:20210304
 ```
 
 4. Once VNM is downloaded i.e. "INFO success: novnc entered RUNNING state" is displayed in terminal, open a browser and go to:
@@ -68,6 +68,13 @@ add the following parameter to the docker call:
 -e RESOLUTION=1920x980
 open in VNC viewer:  http://localhost:5900
 ```
+
+## Change screen resolution in browser without restarting the container:
+Change the browser window size to the desired size, then open a terminal and run:
+```
+curl localhost:6079/resize 
+```
+then wait a few seconds until the noVNC client disconnects. Then click connect and the new desktop size is ready to use :)
 
 ## Run Neurodesk VNM for free on cloud providers:
 * Oracle OCI: https://mri.sbollmann.net/index.php/2020/12/08/run-neurodesk-on-oracle-cloud-free-tier/
