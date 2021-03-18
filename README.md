@@ -17,22 +17,22 @@ For inquiries, please open a new issue, or contact Steffen Bollmann (https://git
 
 * Mac:
 ```
-docker run --privileged --name vnm -v ~/vnm:/vnm -e USER=neuro -p 6080:80 -p 5900:5900 vnmd/vnm:20210318
+docker run --privileged --name vnm -v ~/vnm:/vnm -e USER=neuro -p 6080:80 vnmd/vnm:20210318
 ```
 * Windows:
 ```
-docker run --privileged --name vnm -v C:/vnm:/vnm -e USER=neuro -p 6080:80 -p 5900:5900 vnmd/vnm:20210318
+docker run --privileged --name vnm -v C:/vnm:/vnm -e USER=neuro -p 6080:80 vnmd/vnm:20210318
 ```
 * Linux:
 ```
-sudo docker run --privileged --name vnm -v ~/vnm:/vnm -v /dev/shm:/dev/shm -e USER=neuro -p 6080:80 -p 5900:5900 vnmd/vnm:20210318
+sudo docker run --privileged --name vnm -v ~/vnm:/vnm -v /dev/shm:/dev/shm -e USER=neuro -p 6080:80 vnmd/vnm:20210318
 ```
 
 4. Once VNM is downloaded i.e. "INFO success: novnc entered RUNNING state" is displayed in terminal, open a browser and go to:
 ```
 http://localhost:6080
 ```
-or open a VNC Client and connect to port 5900
+or open a VNC Client and connect to port 5900 (for this -p 5900:5900 has to be added to the docker call)
 
 5. VNM is ready to use!
 
