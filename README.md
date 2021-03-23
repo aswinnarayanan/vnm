@@ -70,11 +70,11 @@ open in VNC viewer:  http://localhost:5900
 ```
 
 ## Change screen resolution in browser without restarting the container:
-Change the browser window size to the desired size, then open a terminal and run:
+Change the browser window size to the desired size, then open a terminal WITHIN the VNM and run:
 ```
 curl localhost:6079/resize 
 ```
-then wait a few seconds until the noVNC client disconnects. Then click connect and the new desktop size is ready to use :)
+then WAIT A FEW SECONDS until the noVNC client disconnects. Then click connect and the new desktop size is ready to use :)
 
 ## Run Neurodesk VNM for free on cloud providers:
 * Oracle OCI: https://mri.sbollmann.net/index.php/2020/12/08/run-neurodesk-on-oracle-cloud-free-tier/
