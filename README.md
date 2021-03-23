@@ -74,7 +74,7 @@ Change the browser window size to the desired size, then open a terminal WITHIN 
 ```
 curl localhost:6079/resize 
 ```
-then WAIT A FEW SECONDS until the noVNC client disconnects. Then click connect and the new desktop size is ready to use :)
+then WAIT BETWEEN A FEW SECONDS TO HALF A MINUTE until the desktop is replaced with a page that says "noVNC" in big letters. Then click the "Connect" button just below the "noVNC" and the new resized desktop size is ready to use :)
 
 ## Run Neurodesk VNM for free on cloud providers:
 * Oracle OCI: https://mri.sbollmann.net/index.php/2020/12/08/run-neurodesk-on-oracle-cloud-free-tier/
