@@ -1,4 +1,4 @@
-sudo docker build -t vnm:latest . && (
+sudo docker build -t vnm:latest . --file vnm_base/Dockerfile && (
     echo "Starting VNM:"
     # sudo docker run -d --privileged --name vnm -v /vnm:/vnm -e RESOLUTION=1920x990 -p 6080:80 -p 5900:5900 vnm:latest
     sudo docker run -d --privileged --name vnm -v /vnm:/vnm -e RESOLUTION=1280x680 -e USER=neuro -p 6080:80 -p 5900:5900 vnm:latest
