@@ -1,6 +1,6 @@
 # Virtual Neuro Machine
 
-A compact Docker container with a browser-accessible environment for reproducible neuroimaging analysis. Only the required software packages, already pre-installed, are downloaded from a public library (downloaded as containers).
+A compact Docker container with a browser-accessible environment for reproducible neuroimaging analysis. Only the required applications, already pre-installed, are downloaded from a public library (downloaded as containers).
 
 You're welcome to complete the survey to help guide future additions to the software library: https://forms.gle/deKy85yniJLP4hDM8
 
@@ -11,7 +11,7 @@ For inquiries, please open a new issue, or contact Steffen Bollmann (https://git
 ## Quickstart
 1. Install Docker from here: https://docs.docker.com/get-docker/ (Mac, Windows, Linux; for HPC/supercomputer: https://github.com/NeuroDesk/neurodesk)
 
-2. Create a local folder where the downloaded software packages will be stored, e.g. ~/vnm in Mac and Linux, or C:\vnm in Windows 
+2. Create a local folder where the downloaded applications will be stored, e.g. ~/vnm in Mac and Linux, or C:\vnm in Windows 
 
 3. Open a terminal, and type the folowing command to automatically download the VNM container and run it (Mac, Windows, Linux commands listed below) 
 
