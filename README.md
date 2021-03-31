@@ -103,7 +103,7 @@ curl -s https://raw.githubusercontent.com/NeuroDesk/neurodesk/master/neurodesk/a
 
 ## How to use applications from the command line
 1. Open a terminal window (there is a terminal icon in the bottom application bar)
-2. Examine the list of downloaded packages that shows up in the terminal window
+2. Examine the list of downloaded packages that shows up in the terminal window. If the desired application is not there, follow the instructions under "launch/download applications" above
 3. Use the 'module' command, giving the desired downloaded package as an argument, e.g.
 ```
 module load fsl_6.0.3
