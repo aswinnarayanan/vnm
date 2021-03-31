@@ -116,6 +116,10 @@ fsleyes
 ## Desktop modifications
 * window tiling is set to: SHIFT-ALT-CTRL-{left,right,up,down}
 
+## Technical details
+Operating system within the docker: Linux Ubuntu 20.04 LTS
+Desktop environemnt within the docker: LXDE/LxQT
+
 ## Acknowledgments
 <img src="https://github.com/NeuroDesk/vnm/blob/master/nif.png" width="250">
 <img src="https://github.com/NeuroDesk/vnm/blob/master/uq_logo.png" width="250">
