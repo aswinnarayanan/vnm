@@ -118,6 +118,7 @@ fsleyes
 
 ## Technical details
 Operating system within the docker: Linux Ubuntu 20.04 LTS
+
 Desktop environemnt within the docker: LXDE/LxQT
 
 ## Acknowledgments
