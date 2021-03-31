@@ -39,7 +39,7 @@ or open a VNC Client and connect to port 5900 (for this -p 5900:5900 has to be a
 (The sudo default sudo password is "ubuntu")
 
 ## How to launch/download applications
-Click on the Launcher icon in bottom-left corner and navigate to the "VNM Neuroimaging" menu, then select the application and version you wish to launch. If it is the first time you launch the application, it will be downloaded to your desktop environment. The application is ready to use when the "Singularity>" propmpt appears in the terminal window that opens. You can now run the GUI of the application (e.g., typing 'fsl') or any other utilities included with it.
+Click on the Launcher icon in bottom-left corner and navigate to the "VNM Neuroimaging" menu, then select the application and version you wish to launch. If it is the first time you launch the application, it will be downloaded to your desktop environment. The application is ready to use when the "Singularity>" propmpt appears in the terminal window that opens. If you chose in the menu the GUI of the application (e.g., fsleyesGUI 6.0.3), it will open automatically. If you chose tha application itself (e.g., fsl 6.0.3), a terminal window will open, and you can use it to run any of the utilities packaged with the application, including the grphical utilities (e.g., typing "fsl" to run FSL's main menu).
 
 Alternatively one can download an application from the command line, e.g.:
 ```
