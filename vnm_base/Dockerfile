@@ -115,6 +115,10 @@ COPY ./config/mimeapps.list /etc/skel/.config/mimeapps.list
 # Use custom bottom panel configuration
 COPY ./config/panel /etc/skel/.config/lxpanel/LXDE/panels/panel
 
+# Allow the root user to access the sshfs mount
+# https://github.com/NeuroDesk/neurodesk/issues/47
+RUN sed -i 's/#user_allow_other/user_allow_other/g' /etc/fuse.conf
+
 # Application and submenu icons
 WORKDIR /
 
