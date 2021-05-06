@@ -117,6 +117,9 @@ fsleyes
 ## Desktop modifications
 * window tiling is set to: SHIFT-ALT-CTRL-{left,right,up,down}
 
+## Multiple workspaces
+There are two workspaces available. To shift between them, click on the miniature image of the desired workspace, just right of the icons displayed on the far left of the bottom bar.
+
 ## Technical details
 Operating system within the docker: Linux Ubuntu 20.04 LTS
 
