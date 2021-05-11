@@ -70,12 +70,16 @@ open in VNC viewer:  http://localhost:5900
 ```
 
 ## Change screen resolution in browser without restarting VNM:
-Change the browser window size to the desired size, then open a terminal WITHIN the VNM and run:
+1. Change the browser window size to the desired size
+2. Click on the terminal icon in the task bar of the VNM (4th icon from the left). If the task bar is not visible, the terminal can be started by clicking on the vnm folder icon on the top-left corner of the VNM desktop, click on "Applications" on the left, click the "System Tools" icon, and then the "LXTerminal" icon.
+3. Type the following command into the terminal and press ENTER:
 ```
 curl localhost:6079/resize 
 ```
-then WAIT BETWEEN A FEW SECONDS TO HALF A MINUTE until the desktop is replaced with a page that says "noVNC" in big letters. Then click the "Connect" button just below the "noVNC" and the new resized desktop size is ready to use. If clicking on "Connect" results in the message "Fails to connect to server" showing on the top, try to click again every few seconds, until the new resized desktop does come up.
-NOTICE: ALL GRAPHICAL AND TERMINAL APPLICATIONS THAT WERE RUNNING WITHIN THE VNM BEFORE THE RESIZE WILL BE TERMINATED (terminal applications can be made to survive by executing the "screen" command before running them, if "screen" is not installed on your VNM, please let us know by starting a discussion in https://github.com/NeuroDesk/neurodesk/discussions) 
+4. Wait between until the desktop is replaced with a page that says "noVNC" in big letters (should take between a few seconds to half a minute)
+5. Click the "Connect" button just below the "noVNC" and the new resized desktop size is ready to use (if clicking on "Connect" results in the message "Fails to connect to server" showing on the top, try to click again every few seconds, until the new resized desktop does come up).
+
+IMPORTANT NOTICE: All graphical and terminal applications that were running within the VNM before the resize will be terminated (terminal applications CAN be made to survive by executing the "screen" command before running them, if "screen" is not installed on your VNM, please let us know by starting a discussion in https://github.com/NeuroDesk/neurodesk/discussions) 
 
 ## Run Neurodesk VNM for free on cloud providers:
 * Oracle OCI: https://mri.sbollmann.net/index.php/2020/12/08/run-neurodesk-on-oracle-cloud-free-tier/
@@ -103,7 +107,7 @@ curl -s https://raw.githubusercontent.com/NeuroDesk/neurodesk/master/neurodesk/a
 ```
 
 ## How to use applications from the command line
-1. Open a terminal window (there is a terminal icon in the bottom application bar)
+1. Open a terminal window (there is a terminal icon in the task bar)
 2. Examine the list of downloaded applications that shows up in the terminal window. If the desired application is not there, follow the instructions under "How to launch/download applications" above (https://github.com/NeuroDesk/vnm/blob/master/README.md#how-to-launchdownload-applications)
 3. Use the 'module' command, giving the desired downloaded application as an argument, e.g.
 ```
@@ -118,7 +122,7 @@ fsleyes
 * window tiling is set to: SHIFT-ALT-CTRL-{left,right,up,down}
 
 ## Multiple workspaces
-There are two workspaces available. To shift between them, click on the miniature image of the desired workspace, just right of the icons displayed on the far left of the bottom bar.
+There are two workspaces available. To shift between them, click on the miniature image of the desired workspace, just right of the icons displayed on the far left of the task bar.
 
 ## Technical details
 Operating system within the docker: Linux Ubuntu 20.04 LTS
