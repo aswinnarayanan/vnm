@@ -70,7 +70,7 @@ open in VNC viewer:  http://localhost:5900
 ```
 
 ## Change screen resolution in browser without restarting VNM:
-1. Change the browser window size to the desired size
+1. Change the size of the browser window within which the VNM runs to the desired size
 2. Click on the terminal icon in the task bar of the VNM (4th icon from the left). If the task bar is not visible, the terminal can be started by clicking on the vnm folder icon on the top-left corner of the VNM desktop, click on "Applications" on the left, click the "System Tools" icon, and then the "LXTerminal" icon.
 3. Type the following command into the terminal and press ENTER:
 ```
