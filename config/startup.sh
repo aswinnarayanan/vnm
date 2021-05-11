@@ -20,6 +20,8 @@ if [ -n "$RESOLUTION" ]; then
     sed -i "s/1024x768/$RESOLUTION/" /usr/local/bin/xvfb.sh
 fi
 
+
+
 USER=${USER:-root}
 HOME=/root
 if [ "$USER" != "root" ]; then
@@ -29,8 +31,7 @@ if [ "$USER" != "root" ]; then
         echo "  set default password to \"ubuntu\""
         PASSWORD=ubuntu
     fi
-    HOME=/vnm-home/$USER
-    mkdir -p $HOME
+    HOME=/home/$USER
     echo "$USER:$PASSWORD" | chpasswd
     cp -r /root/{.config,.gtkrc-2.0,.asoundrc} ${HOME}
     cp -r /etc/skel/{.bashrc,.itksnap.org,.config,Desktop} ${HOME}
@@ -75,3 +76,8 @@ PASSWORD=
 HTTP_PASSWORD=
 
 exec /bin/tini -- supervisord -n -c /etc/supervisor/supervisord.conf
+
+#start CVMFS:
+# cvmfs_config wsl2_start
+# sudo cvmfs_config wsl2_start
+#cd /cvmfs/neurodesk.ardc.edu.au

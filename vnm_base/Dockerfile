@@ -169,4 +169,5 @@ WORKDIR /
 # The homedirectory is configured on startup: https://github.com/fcwu/docker-ubuntu-vnc-desktop/blob/develop/rootfs/startup.sh
 # COPY ./config/startup.sh /startup.sh
 
-# rebuild
+# try to start cvmfs via modified /etc/supervisor/supervisord.conf
+COPY ./config/supervisord.conf /etc/supervisor/supervisord.conf
