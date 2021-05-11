@@ -79,7 +79,7 @@ curl localhost:6079/resize
 4. Wait between until the desktop is replaced with a page that says "noVNC" in big letters (should take between a few seconds to half a minute)
 5. Click the "Connect" button just below the "noVNC" and the new resized desktop size is ready to use (if clicking on "Connect" results in the message "Fails to connect to server" showing on the top, try to click again every few seconds, until the new resized desktop does come up).
 
-IMPORTANT NOTICE: All graphical and terminal applications that were running within the VNM before the resize will be terminated. If desired, terminal applications CAN be made to survive by executing the "screen" command before running the application. If "screen" is not installed on your VNM, please let us know by starting a discussion in https://github.com/NeuroDesk/neurodesk/discussions).
+IMPORTANT NOTICE: All graphical and terminal applications that were running within the VNM before the resize will be terminated. If desired, terminal applications CAN be made to survive by executing the "screen" command before running the application. If "screen" is not installed on your VNM, please let us know by starting a discussion in https://github.com/NeuroDesk/neurodesk/discussions
 
 ## Run Neurodesk VNM for free on cloud providers:
 * Oracle OCI: https://mri.sbollmann.net/index.php/2020/12/08/run-neurodesk-on-oracle-cloud-free-tier/
