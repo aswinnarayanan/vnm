@@ -11,3 +11,6 @@ sudo docker build -t vnm:latest . --file vnm_base/Dockerfile && (
     echo "Docker Build failed!"
     echo "-------------------------"
 )
+
+# debug
+# sudo docker build -t vnm:latest . --file vnm_base/Dockerfile && sudo docker run --privileged --name vnm -v /vnm:/vnm -e RESOLUTION=1600x960 -e USER=neuro -p 6080:80 -p 5900:5900 vnm:latest
