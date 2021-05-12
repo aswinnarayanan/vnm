@@ -97,6 +97,7 @@ RUN apt-get update \
         openssh-client \
         python3-pip \
         rsync \
+        screen \
         tree \
         vim \
         gcc \
