@@ -71,6 +71,10 @@ if [ -n "$RELATIVE_URL_ROOT" ]; then
 	sed -i 's|_RELATIVE_URL_ROOT_|'$RELATIVE_URL_ROOT'|' /etc/nginx/sites-enabled/default
 fi
 
+echo "[program:cvmfs]" >> /etc/supervisor/conf.d/supervisord.conf
+echo "priority=30" >> /etc/supervisor/conf.d/supervisord.conf
+echo "command=mount -t cvmfs neurodesk.ardc.edu.au /cvmfs/neurodesk.ardc.edu.au" >> /etc/supervisor/conf.d/supervisord.conf
+
 # clearup
 PASSWORD=
 HTTP_PASSWORD=
