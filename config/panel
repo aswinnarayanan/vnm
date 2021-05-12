@@ -120,16 +120,6 @@ Plugin {
   }
 }
 Plugin {
-  type=dclock
-  Config {
-    ClockFmt=%R
-    TooltipFmt=%A %x
-    BoldFont=0
-    IconOnly=0
-    CenterText=0
-  }
-}
-Plugin {
   type=launchbar
   Config {
     Button {
