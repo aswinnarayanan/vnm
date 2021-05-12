@@ -170,5 +170,5 @@ WORKDIR /
 # COPY ./config/startup.sh /startup.sh
 
 # try to start cvmfs via modified /etc/supervisor/supervisord.conf
-COPY ./config/supervisord.conf /etc/supervisor/supervisord.conf
+COPY ./config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 RUN mkdir /cvmfs/neurodesk.ardc.edu.au

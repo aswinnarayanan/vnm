@@ -76,8 +76,3 @@ PASSWORD=
 HTTP_PASSWORD=
 
 exec /bin/tini -- supervisord -n -c /etc/supervisor/supervisord.conf
-
-#start CVMFS:
-# cvmfs_config wsl2_start
-# sudo cvmfs_config wsl2_start
-#cd /cvmfs/neurodesk.ardc.edu.au
