@@ -61,32 +61,8 @@ docker stop vnm
 ```
 docker rm vnm
 ```
-
-## Start with custom screen resolution for VNC Viewer:
-add the following parameter to the docker call:
-```
--e RESOLUTION=1920x980
-open in VNC viewer:  http://localhost:5900
-```
-
-## Change screen resolution in browser without restarting VNM:
-
-IMPORTANT NOTICE: All graphical and terminal applications running within the VNM will be terminated after the resize. If desired, terminal applications CAN be made to survive by executing the "screen" command before running the application. If "screen" is not installed on your VNM, please let us know by starting a discussion at https://github.com/NeuroDesk/neurodesk/discussions
-
-1. Change the size of the browser window within which the VNM runs to the desired size
-2. Click on the terminal icon in the task bar of the VNM (4th icon from the left). If the task bar is not visible, the terminal can be started by clicking on the vnm folder icon on the top-left corner of the VNM desktop, click on "Applications" on the left, click the "System Tools" icon, and then the "LXTerminal" icon.
-3. Type the following command into the terminal and press ENTER:
-```
-curl localhost:6079/resize 
-```
-4. Wait until the desktop is replaced with a page that says "noVNC" in big letters (should take between a few seconds to half a minute)
-5. Click the "Connect" button just below the "noVNC" and the new resized desktop size is ready to use (if clicking on "Connect" results in the message "Fails to connect to server" showing on the top, try to click again every few seconds, until the new resized desktop does come up).
-
-## Run Neurodesk VNM for free on cloud providers:
-* Oracle OCI: https://mri.sbollmann.net/index.php/2020/12/08/run-neurodesk-on-oracle-cloud-free-tier/
-* Microsoft Azure: https://henryjburg.medium.com/neurodesk-running-on-azure-3e38c590a152 
-
-## List of available software in the Desktop (no need to download! already included in main container)
+## Applications
+### List of available software in the Desktop (no need to download! already included in main container)
 * Git 2.25.1 (version control)
 * Lmod 6.6 (for handling different versions of software)
 * Nipype 1.5.0 (workflow system for neuro-imaging)
@@ -95,19 +71,19 @@ curl localhost:6079/resize
 * Singularity 3.7.0 (container runtime)
 * Visual Studio Code 1.46.1 (code editor and development environment)
 
-## This gives you a list of available images:
+### List of all available images:
 https://github.com/NeuroDesk/caid/packages
 ```
 curl -s https://github.com/Neurodesk/caid/packages | sed -n "s/^.*\/NeuroDesk\/caid\/packages\/.*>\(.*\)\(\S*\)<\/a>$/\1/p"
 ```
 
-## This gives you a list of all tested images available in neurodesk:
+### List of all tested images available in neurodesk:
 https://github.com/NeuroDesk/neurodesk/blob/master/neurodesk/apps.json
 ```
 curl -s https://raw.githubusercontent.com/NeuroDesk/neurodesk/master/neurodesk/apps.json
 ```
 
-## How to use applications from the command line
+### How to use applications from the command line
 1. Open a terminal window (there is a terminal icon in the task bar)
 2. Examine the list of downloaded applications that shows up in the terminal window. If the desired application is not there, follow the instructions under "How to launch/download applications" above (https://github.com/NeuroDesk/vnm/blob/master/README.md#how-to-launchdownload-applications)
 3. Use the 'module' command, giving the desired downloaded application as an argument, e.g.
@@ -119,16 +95,16 @@ module load fsl_6.0.3
 fsleyes
 ```
 
-## Desktop modifications
+## Desktop interface
 * window tiling is set to: SHIFT-ALT-CTRL-{left,right,up,down}
+* There are two workspaces available. To shift between them, click on the miniature image of the desired workspace, just right of the icons displayed on the far left of the task bar.
 
-## Multiple workspaces
-There are two workspaces available. To shift between them, click on the miniature image of the desired workspace, just right of the icons displayed on the far left of the task bar.
-
-## Technical details
-Operating system within the docker: Linux Ubuntu 20.04 LTS
-
-Desktop environemnt within the docker: LXDE/LxQT
+## Advanced instructions
+- [Run Neurodesk VNM for free on cloud providers](https://github.com/NeuroDesk/vnm/wiki/Run-Neurodesk-VNM-for-free-on-cloud-providers)
+- [Start with custom screen resolution for VNC Viewer](https://github.com/NeuroDesk/vnm/wiki/Start-with-custom-screen-resolution-for-VNC-Viewer)
+- [Change screen resolution in browser without restarting VNM](https://github.com/NeuroDesk/vnm/wiki/Change-screen-resolution-in-browser-without-restarting-VNM)
+- [Mount Volume using SSHFS](https://github.com/NeuroDesk/vnm/wiki/Mount-volume-using-SSHFS)
+- [Technical details](https://github.com/NeuroDesk/vnm/wiki/Technical-Details)
 
 ## Acknowledgments
 <img src="https://github.com/NeuroDesk/vnm/blob/master/nif.png" width="250">
