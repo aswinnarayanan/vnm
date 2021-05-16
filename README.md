@@ -76,9 +76,6 @@ bash /neurodesk/local/fetch_and_run.sh fsl 6.0.3 20200905
 
 ### List of all available images:
 https://github.com/NeuroDesk/caid/packages
-```
-curl -s https://github.com/Neurodesk/caid/packages | sed -n "s/^.*\/NeuroDesk\/caid\/packages\/.*>\(.*\)\(\S*\)<\/a>$/\1/p"
-```
 
 ### List of all tested images available in neurodesk:
 https://github.com/NeuroDesk/neurodesk/blob/master/neurodesk/apps.json
