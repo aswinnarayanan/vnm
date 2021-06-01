@@ -107,6 +107,7 @@ RUN apt-get update \
         libgfortran5 \
         zlib1g-dev \
         zip \
+        unzip \
         nextcloud-client \
         iputils-ping \
         sshfs \
