@@ -113,6 +113,7 @@ fsleyes
 - [Start with custom screen resolution for VNC Viewer](https://github.com/NeuroDesk/vnm/wiki/Start-with-custom-screen-resolution-for-VNC-Viewer)
 - [Change screen resolution in browser without restarting VNM](https://github.com/NeuroDesk/vnm/wiki/Change-screen-resolution-in-browser-without-restarting-VNM)
 - [Mount Volume using SSHFS](https://github.com/NeuroDesk/vnm/wiki/Mount-volume-using-SSHFS)
+- [Not enough free space](https://github.com/NeuroDesk/vnm/wiki/Not-enough-free-space)
 - [Technical details](https://github.com/NeuroDesk/vnm/wiki/Technical-Details)
 
 ## Acknowledgments
