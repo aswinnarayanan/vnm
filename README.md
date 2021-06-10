@@ -36,6 +36,7 @@ docker run --privileged --name vnm -v C:/vnm:/vnm -e USER=neuro -p 6080:80 vnmd/
 ```
 sudo docker run --privileged --name vnm -v ~/vnm:/vnm -v /dev/shm:/dev/shm -e USER=neuro -p 6080:80 vnmd/vnm:20210523
 ```
+(notice: if you get errors in VNM then check if the ~/vnm directory is writable to all users, otherwise run `chmod a+rwx ~/vnm`)
 
 4. Once VNM is downloaded i.e. "INFO success: novnc entered RUNNING state" is displayed in terminal, open a browser and go to:
 ```
