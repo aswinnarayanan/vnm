@@ -12,7 +12,7 @@ For inquiries, please open a new issue, or contact Steffen Bollmann (https://git
 
 ## Minimum System Requirements
 1. Docker requirements. Details found under https://docs.docker.com/get-docker/
-2. Atleast 3GB free space
+2. Atleast 3GB free space for VNM base image
 
 ## Quickstart
 1. Install Docker from here: https://docs.docker.com/get-docker/ (Mac, Windows, Linux; for HPC/supercomputer: https://github.com/NeuroDesk/neurodesk)
