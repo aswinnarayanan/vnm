@@ -11,8 +11,9 @@ For inquiries, please open a new issue, or contact Steffen Bollmann (https://git
 ![Screenshot](Screenshot.png)
 
 ## Minimum System Requirements
-1. Docker requirements. Details found under https://docs.docker.com/get-docker/
-2. Atleast 3GB free space for VNM base image
+1. Atleast 3GB free space for VNM base image
+2. Docker requirements. Details found under https://docs.docker.com/get-docker/
+3. (Windows Users) If installing docker using WSL, atleast 20GB space recommended for WSL with Ubuntu
 
 ## Quickstart
 1. Install Docker from here: https://docs.docker.com/get-docker/ (Mac, Windows, Linux; for HPC/supercomputer: https://github.com/NeuroDesk/neurodesk)
