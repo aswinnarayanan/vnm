@@ -72,7 +72,8 @@ bash /neurodesk/local/fetch_and_run.sh fsl 6.0.3 20200905
 ```
 (Notice: last argument is to be taken from https://github.com/NeuroDesk/neurodesk/blob/master/neurodesk/apps.json)
 
-
+## Where is my data?
+The `-v C:/vnm:/vnm` part of the docker command links the directory "vnm" on the "C drive" of your Windows computer to the directory /vnm inside the VNM. Everything you store in there will be available inside VNM and on the host computer. You can also mount additional directories by adding another -v parameter set (e.g. `-v D:/moredata:/data`) - this will mount a directory from your D drive.  
 
 ## Applications
 ### List of available software in the Desktop (no need to download! already included in main container)
