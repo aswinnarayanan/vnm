@@ -8,6 +8,8 @@ For inquiries, please open a new issue, or contact Steffen Bollmann (https://git
 
 2-minutes tutorial video from OHBM 2021: https://www.youtube.com/watch?v=JLv_5fycugw
 
+Neurodesk/VNM website: https://neurodesk.github.io/
+
 ![Screenshot](Screenshot.png)
 
 ## Minimum System Requirements
