@@ -89,7 +89,7 @@ bash /neurodesk/local/fetch_and_run.sh fsl 6.0.3 20200905
 * Visual Studio Code 1.46.1 (code editor and development environment)
 
 ### List of all available images:
-https://github.com/NeuroDesk/caid/packages
+https://github.com/NeuroDesk/neurocontainers/packages
 
 ### List of all tested images available in neurodesk:
 https://github.com/NeuroDesk/neurodesk/blob/master/neurodesk/apps.json
