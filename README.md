@@ -4,7 +4,7 @@ A compact Docker container with a browser-accessible environment for reproducibl
 
 You're welcome to complete the survey to help guide future additions to the software library: https://forms.gle/deKy85yniJLP4hDM8
 
-To post an inquiry, please go to the "Discussions" tab of the NeuroDesk project (https://github.com/NeuroDesk/neurodesk/discussions), and press the "New Discussion" button. Alternatively, contact Steffen Bollmann (https://github.com/stebo85), Oren Civier (https://github.com/civier) or Aswin Narayanan (https://github.com/aswinnarayanan).
+To post an inquiry, please go to the "Discussions" tab of the NeuroDesk project (https://github.com/NeuroDesk/neurodesk/discussions), and press the "New Discussion" button. Alternatively, contact Steffen Bollmann (https://github.com/stebo85), Oren Civier (https://anif.org.au/team/oren-civier/) or Aswin Narayanan (https://github.com/aswinnarayanan).
 
 2-minutes tutorial video from OHBM 2021: https://www.youtube.com/watch?v=JLv_5fycugw
 
